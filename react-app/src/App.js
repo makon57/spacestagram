@@ -18,7 +18,7 @@ function App() {
   useEffect(() => {
     (async() => {
       await dispatch(authenticate());
-      // await dispatch(fetchAllPosts());
+      await dispatch(fetchAllPosts());
       setLoaded(true);
     })();
   }, [dispatch]);

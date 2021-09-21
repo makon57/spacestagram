@@ -1,16 +1,28 @@
 .info-container {
     display: grid;
     grid-template-columns: 3fr 1fr;
-    grid-template-areas:
-        "date" "button"
-        "description" "description"
-    ;
     margin: 0 auto;
+
 }
 
 .posts-container {
     padding-left: 0px;
-    margin: auto;
+    display: block;
+    margin: 0 auto;
+}
+
+.post-container {
+    box-shadow: 3px 4px 6px 4px rgba(0,0,0,0.2);
+    border-radius: 5px;
+    max-width: 800px;
+    max-height: 1000px;
+    width: 70vw;
+    padding-left: 0px;
+    display: block;
+    margin: 0 auto;
+    margin-bottom: 5vw;
+    padding: 5vw 5vw 5vw 5vw;
+
 }
 
 .post-container li {
@@ -21,19 +33,67 @@
 }
 
 .post-container img {
-    max-width: 80vw;
-    display: block;
-    margin: 0 auto;
+    max-width: inherit;
+    max-height: inherit;
+    height: inherit;
+    width: inherit;
+    object-fit: cover;
 }
 
-.description {
-    grid-area: description;
+.explanation {
+    grid-column: 1 / 3;
+    grid-row: 2;
+    overflow: hidden;
+}
+
+.more-less {
+    grid-column: 1 / 3;
+    grid-row: 3;
 }
 
 .date {
-    grid-area: date;
+    grid-column: 1 / 2;
+    grid-row: 1;
 }
 
-.like {
-    grid-area: button;
+.info-container button {
+    grid-column: 2 / 3;
+    grid-row: 1;
+    width: 4vw;
+    height: 4vw;
+    background-color: transparent;
+    color: black;
+    border: none;
+    margin: 0 auto;
+    margin-top: 2vw;
+}
+
+.copyright {
+    grid-column: 1 / 3;
+    grid-row: 4;
+}
+
+#heart img{
+    position:absolute;
+    top: 40%;
+    left:0;
+    right:0;
+    margin:0 auto;
+}
+
+@keyframes heartFadeInOut {
+    0% {transform: scale(1);}
+    25% {transform: scale(.97);}
+    35% {transform: scale(.9);}
+    45% {transform: scale(1.1);}
+    55% {transform: scale(.9);}
+    65% {transform: scale(1.1);}
+    75% {transform: scale(1.03);}
+    100% {transform: scale(1);}
+}
+
+#heart img.bottom {
+    animation-name: heartFadeInOut;
+    animation-iteration-count: 3;
+    animation-duration: 2s;
 }

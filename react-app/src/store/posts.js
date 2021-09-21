@@ -1,5 +1,4 @@
 
-
 const ALL_POSTS = 'posts/ALL_POSTS';
 
 const getAllPosts = (posts) => ({
@@ -8,29 +7,25 @@ const getAllPosts = (posts) => ({
 })
 
 export const fetchAllPosts = () => async (dispatch) => {
-    let total = 0;
-    let posts = {}
 
-    while (total < 2) {
-        const res = await fetch(`https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY`);
-        if (res.ok) {
-            const data = await res.json();
-            if (data.errors) {
-                return;
-            } else {
-                posts[total] = data;
-            }
+    const res = await fetch(`https://api.nasa.gov/planetary/apod?api_key=kZyLA5auBO1bQRcfqA2lh6o0TnuN7XZuZI6hbwH8&count=5`);
+
+    const data = await res.json();
+    console.log(data)
+    if (res.ok) {
+        if (data.errors) {
+            return;
+        } else {
+            dispatch(getAllPosts(data))
         }
-        total++
     }
-    dispatch(getAllPosts(posts))
-    return posts
+    return data
 }
 
 export default function reducer(state = [], action) {
     switch (action.type) {
         case ALL_POSTS:
-            return {...state, ...action.posts};
+            return [...state, ...action.posts];
         default:
             return state;
     }
