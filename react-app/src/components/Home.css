@@ -1,0 +1,39 @@
+.info-container {
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    grid-template-areas:
+        "date" "button"
+        "description" "description"
+    ;
+    margin: 0 auto;
+}
+
+.posts-container {
+    padding-left: 0px;
+    margin: auto;
+}
+
+.post-container li {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 10vw;
+}
+
+.post-container img {
+    max-width: 80vw;
+    display: block;
+    margin: 0 auto;
+}
+
+.description {
+    grid-area: description;
+}
+
+.date {
+    grid-area: date;
+}
+
+.like {
+    grid-area: button;
+}
