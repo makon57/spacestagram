@@ -1,44 +1,59 @@
 
 import { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { oneLikeHeart } from "../store/posts";
 import './Home.css'
 
 
 const Home = () => {
 
+    const dispatch = useDispatch()
     const [showMore, setShowMore] = useState(false)
     const [heart, setHeart] = useState(false)
-    const [icon, setIcon] = useState(<img src="https://i.imgur.com/pa47Jev.png" alt='empty-heart' />)
     const [showHeart, setShowHeart] = useState(false)
 
     useEffect(() => {
-        if (heart  !== true) {
-            setIcon(<img src="https://i.imgur.com/pa47Jev.png" alt='empty-heart' />)
-        } else {
-            setIcon(<img src="https://i.imgur.com/NsLkntP.png" alt='heart' />)
-        }
+        console.log(heart)
     },[heart])
 
     const largeHeart = () => {
         setShowHeart(true)
     }
 
+    const likeHeart = async (post) => {
+        const res = await dispatch(oneLikeHeart(post, allPosts))
+        if (res.like) {
+            setHeart(false)
+        } else {
+            setHeart(true)
+        }
+    }
 
-    const posts = Object.values(useSelector((state) => state.posts))
+    const allPosts = Object.values(useSelector((state) => state.posts))
+    allPosts.forEach(post => allPosts.indexOf(post) % 2 === 0 ? post.like = false : post.like = true)
+    console.log(allPosts)
 
     return (
         <>
             <div>
                 <ul className='posts-container'>
-                    {posts?.map((post, i) => (
+                    {allPosts?.map((post, i) => (
                         <li key={i} className='post-container' onDoubleClick={largeHeart}>
                             <>
                                 <img src={post.url} alt='' className='image'/>
                                 <div className='info-container'>
-                                    <button onClick={() => setHeart(!heart)} className='like'>{icon}</button>
-                                    { post.copyright ? <p className='copyright'>{post.copyright}</p> : <p>Anonymous</p> }
+                                    <button onClick={() => likeHeart(post)} className='like'>{post.like ? <img src="https://i.imgur.com/NsLkntP.png" alt='heart' /> : <img src="https://i.imgur.com/pa47Jev.png" alt='empty-heart' />}</button>
                                     <>
-                                        {showMore ? <p className="explanation">{post.explanation}</p> : <p className="explanation">{(post.explanation).substring(0, 250)}</p>}
+                                        {showMore && post.explanation ?
+                                        <>
+                                            <p className="explanation">{post.explanation}</p>
+                                            { post.copyright ? <p className='copyright'>{post.copyright}</p> : <p>Anonymous</p> }
+                                        </>
+                                        :
+                                        <>
+                                            <p className="explanation">{(post.explanation).substring(0, 250)}</p>
+                                        </>
+                                        }
                                         <span onClick={() => setShowMore(!showMore)} className='more-less'>{ showMore ? 'Show less' : 'Show more' }</span>
                                     </>
                                     <p className='date'>{post.date}</p>
