@@ -1,3 +1,4 @@
+
 .info-container {
     display: grid;
     grid-template-columns: 3fr 1fr;
@@ -9,9 +10,9 @@
     padding-left: 0px;
     display: block;
     margin: 0 auto;
-    max-width: 800px;
     padding-bottom: 8vw;
     padding-top: 8vw;
+    overflow-y: auto;
 }
 
 .post-container {
