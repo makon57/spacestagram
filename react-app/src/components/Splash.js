@@ -27,7 +27,7 @@ const Splash = () => {
                         }
                     </div>
                     <div className='manna-info'>
-                        <p>Created by <a href="https://github.com/makon57" target="_blank" rel="noopener noreferrer">Manna</a></p>
+                        <p>Created by <a href="https://github.com/makon57/spacestagram" target="_blank" rel="noopener noreferrer">Manna</a></p>
                     </div>
                 </span>
             </div>
