@@ -19,12 +19,15 @@ const Splash = () => {
             <div className='header-container'>
                 <span className='user-header-name'>
                     <div className="span-header">
-                    <h1>Welcome to Spacestagram!</h1>
-                    {user ? null :
-                    <div className='demo-header'>
-                        <button className='demo-btn' onClick={onDemoLogin} type='button'>DEMO</button>
+                        <h1>Welcome to Spacestagram!</h1>
+                        {user ? null :
+                        <div className='demo-header'>
+                            <button className='demo-btn' onClick={onDemoLogin} type='button'>DEMO</button>
+                        </div>
+                        }
                     </div>
-                    }
+                    <div className='manna-info'>
+                        <p>Created by <a href="https://github.com/makon57" target="_blank" rel="noopener noreferrer">Manna</a></p>
                     </div>
                 </span>
             </div>
