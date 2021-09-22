@@ -8,7 +8,7 @@ const Image = ({post}) => {
 
     const likeHeart = (post) => {
 
-        if (post['like'] == false) {
+        if (post['like'] === false) {
             post.like = true
         } else {
             post.like = false;

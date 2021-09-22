@@ -8,7 +8,7 @@ const getAllPosts = (posts) => ({
 
 export const fetchAllPosts = () => async (dispatch) => {
 
-    const res = await fetch(`https://api.nasa.gov/planetary/apod?api_key=kZyLA5auBO1bQRcfqA2lh6o0TnuN7XZuZI6hbwH8&count=5`);
+    const res = await fetch(`https://api.nasa.gov/planetary/apod?api_key=${process.env.REACT_APP_KEY}&count=10`);
 
     const data = await res.json();
     if (res.ok) {
