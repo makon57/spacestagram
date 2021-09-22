@@ -1,19 +1,10 @@
 
 const ALL_POSTS = 'posts/ALL_POSTS';
-const LIKE_POST = 'posts/LIKE_POST';
-
 
 const getAllPosts = (posts) => ({
     type: ALL_POSTS,
     posts,
 })
-
-const likeOne = (id, post) => ({
-    type: LIKE_POST,
-    id,
-    post,
-})
-
 
 export const fetchAllPosts = () => async (dispatch) => {
 
@@ -30,24 +21,10 @@ export const fetchAllPosts = () => async (dispatch) => {
     return data
 }
 
-export const oneLikeHeart = (post, allPosts) => async (dispatch) => {
-
-    let theOne = allPosts.filter(p => allPosts.indexOf(p) === allPosts.indexOf(post))
-    if (post.like) {
-        theOne.like = false
-    } else {
-        theOne.like = true
-    }
-    dispatch(likeOne(allPosts.indexOf(theOne), theOne))
-    return theOne
-}
-
 export default function reducer(state = [], action) {
     switch (action.type) {
         case ALL_POSTS:
             return [...state, ...action.posts];
-        case LIKE_POST:
-            return [...state.splice((item, index) => action.id, 1, action.post)];
         default:
             return state;
     }

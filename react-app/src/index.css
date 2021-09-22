@@ -1,5 +1,93 @@
 /* TODO Add site wide styles */
-body {
+body, html {
     font-size: 3vw;
-    /* background-color: black; */
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    font-family: 'PT Sans Narrow';
+    background-color: black;
 }
+
+.header-container {
+    margin: 0 auto;
+    width: 100%;
+    height: 100vw;
+    position: inherit;
+    text-align: center;
+    background-image: url("https://i.imgur.com/CJRSmsq.jpg");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    overflow-y: hidden;
+}
+
+.user-header-name {
+    color: white;
+    font-size: 8vw;
+    /* vertical-align: center; */
+    font-family: 'Bebas Neue';
+    margin: 0 0 0 0;
+    padding-top: 10%;
+    padding-left: 25%;
+    height: 50px;
+    width: 50%;
+    text-shadow: 5px 5px 5px black;
+}
+
+.demo-header button{
+    background-color: rgba(255, 255, 255, 0.5);
+    font-size: 5vw;
+    width: 20vw;
+}
+
+.nav-container {
+    background-color: rgba(255,255,255,0.5);
+    height: 10vw;
+    display: flex;
+    justify-content: space-between;
+    padding-left: 5vw;
+    padding-right: 5vw;
+}
+
+.nav-container h1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-style: italic;
+    font-size: 7vw;
+}
+
+.nav-container div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.nav-container button {
+    background-color: rgba(255, 255, 255, 0.5);
+    font-size: 3vw;
+}
+
+.nav-container button:hover {
+    animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
+    transform: translate3d(0, 0, 0);
+    perspective: 1000px;
+    background-color: rgba(255, 255, 255, 0.8);
+}
+
+  @keyframes shake {
+    10%, 90% {
+      transform: translate3d(-1px, 0, 0);
+    }
+    20%, 80% {
+      transform: translate3d(2px, 0, 0);
+    }
+    30%, 50%, 70% {
+      transform: translate3d(-4px, 0, 0);
+    }
+    40%, 60% {
+      transform: translate3d(4px, 0, 0);
+    }
+  }
